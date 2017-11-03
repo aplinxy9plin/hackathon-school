@@ -1,6 +1,11 @@
 <script src="./js/jquery-2.1.0.min.js"></script>
 <script type="text/javascript">
-// https://cloud-api.yandex.net/v1/disk/
+
+/*
+	ЯНДЕКС ДИСК
+*/
+
+// инфа по диску https://cloud-api.yandex.net/v1/disk/
 	$.ajax({
 		url: 'https://cloud-api.yandex.net:443/v1/disk/resources/files',
 		type: 'GET',
@@ -18,25 +23,48 @@
 	})
 	function yandexDisk(json){
 		var folders = [];
-		var goodFold = [];
+		var content = [];
+		var noFolder = [];
 		var x = 0;
+		var z = 0;
 		for (var i = json.items.length - 1; i >= 0; i--) {
 			document.write(json.items[i].path.replace('disk:/', '') + '<br>');
 			if(json.items[i].path.replace('disk:/', '').indexOf('/') + 1){
 				folders[x] = explode('/', json.items[i].path.replace('disk:/', ''));
 				x++;
+			}else{
+				noFolder[z] = json.items[i].path.replace('disk:/', '');
+				z++;
 			}
 		}
+		content = folders;
 		// Папка
 		document.write('<br>Folders <br>');
-		var y = 0;
 		folders = unique(folders);
-		for (var i = folders.length - 1; i >= 0; i--) {
-			document.write(folders[i] + '<br>');
-		}
-		console.log(folders);
+		console.log(content);
 		// Содержание папок
+		x = 0;
+		var y = 1;
+		for (var i = folders.length - 1; i >= 0; i--) {
+			document.write('<b>' +folders[i] + '</b>' + '<br>');
+			for (var j = content.length - 1; j >= 0; j--) {
+				if(content[j][0] == folders[i]){
+					document.write(content[j][1] + '<br>');
+				}
+			}
+		}
+		// Без нихуя
+		document.write('<b>Без нихуя</b>' + '<br>');
+		for (var i = noFolder.length - 1; i >= 0; i--) {
+			document.write(noFolder[i] + '<br>');
+		}
 	}
+
+/*
+	MAIL RU
+*/
+
+
 	function explode( delimiter, string ) {
 	var emptyArray = { 0: '' };
 	if ( arguments.length != 2
