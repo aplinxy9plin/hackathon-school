@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,10 +26,13 @@ namespace WebDisplayClient
         {
             InitializeComponent();
 
-            //Set interface file path
-            string path = "http://" + "ru.wikipedia.org";
-
-            Uri uri = new Uri(path);
+             
+            string currentPath = Directory.GetCurrentDirectory();                  
+            Uri uri = new Uri   
+                (currentPath + @"\..\..\..\..\" +
+                //Set interface file relative path
+                /* hackathon-school\ */ @"test.php"
+                );
             Browser.Source = uri;
         }
     }
