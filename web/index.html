@@ -1,0 +1,75 @@
+<script src="./js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+// https://cloud-api.yandex.net/v1/disk/
+	$.ajax({
+		url: 'https://cloud-api.yandex.net:443/v1/disk/resources/files',
+		type: 'GET',
+		dataType: 'json',
+		headers: {
+		"Authorization": "OAuth AQAAAAAZ1hl4AAShIcrkoZBYFUPHojiDTZW-V94"
+		},
+		success: function (data) {
+		console.log(data);
+		yandexDisk(data);
+		},
+		error: function (error) {
+		console.log(error);
+		}
+	})
+	function yandexDisk(json){
+		var folders = [];
+		var goodFold = [];
+		var x = 0;
+		for (var i = json.items.length - 1; i >= 0; i--) {
+			document.write(json.items[i].path.replace('disk:/', '') + '<br>');
+			if(json.items[i].path.replace('disk:/', '').indexOf('/') + 1){
+				folders[x] = explode('/', json.items[i].path.replace('disk:/', ''));
+				x++;
+			}
+		}
+		// Папка
+		document.write('<br>Folders <br>');
+		var y = 0;
+		folders = unique(folders);
+		for (var i = folders.length - 1; i >= 0; i--) {
+			document.write(folders[i] + '<br>');
+		}
+		console.log(folders);
+		// Содержание папок
+	}
+	function explode( delimiter, string ) {
+	var emptyArray = { 0: '' };
+	if ( arguments.length != 2
+		|| typeof arguments[0] == 'undefined'
+		|| typeof arguments[1] == 'undefined' )
+	{
+		return null;
+	}
+	if ( delimiter === ''
+		|| delimiter === false
+		|| delimiter === null )
+	{
+		return false;
+	}
+	if ( typeof delimiter == 'function'
+		|| typeof delimiter == 'object'
+		|| typeof string == 'function'
+		|| typeof string == 'object' )
+	{
+		return emptyArray;
+	}
+	if ( delimiter === true ) {
+		delimiter = '1';
+	}
+	return string.toString().split ( delimiter.toString() );
+}
+function unique(arr) {
+  var obj = {};
+
+  for (var i = 0; i < arr.length; i++) {
+    var str = arr[i][0];
+    obj[str] = true;
+  }
+  return Object.keys(obj);
+}
+</script>
