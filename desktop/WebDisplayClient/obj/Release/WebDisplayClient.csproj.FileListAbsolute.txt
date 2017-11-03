@@ -1,0 +1,13 @@
+Z:\Users\Ходанович\documents\visual studio 2015\Projects\WebDisplayClient\WebDisplayClient\bin\Release\WebDisplayClient.exe.config
+Z:\Users\Ходанович\documents\visual studio 2015\Projects\WebDisplayClient\WebDisplayClient\bin\Release\WebDisplayClient.exe
+Z:\Users\Ходанович\documents\visual studio 2015\Projects\WebDisplayClient\WebDisplayClient\bin\Release\WebDisplayClient.pdb
+Z:\Users\Ходанович\documents\visual studio 2015\Projects\WebDisplayClient\WebDisplayClient\obj\Release\MainWindow.g.cs
+Z:\Users\Ходанович\documents\visual studio 2015\Projects\WebDisplayClient\WebDisplayClient\obj\Release\App.g.cs
+Z:\Users\Ходанович\documents\visual studio 2015\Projects\WebDisplayClient\WebDisplayClient\obj\Release\WebDisplayClient_MarkupCompile.cache
+Z:\Users\Ходанович\documents\visual studio 2015\Projects\WebDisplayClient\WebDisplayClient\obj\Release\WebDisplayClient_MarkupCompile.lref
+Z:\Users\Ходанович\documents\visual studio 2015\Projects\WebDisplayClient\WebDisplayClient\obj\Release\MainWindow.baml
+Z:\Users\Ходанович\documents\visual studio 2015\Projects\WebDisplayClient\WebDisplayClient\obj\Release\WebDisplayClient.g.resources
+Z:\Users\Ходанович\documents\visual studio 2015\Projects\WebDisplayClient\WebDisplayClient\obj\Release\WebDisplayClient.Properties.Resources.resources
+Z:\Users\Ходанович\documents\visual studio 2015\Projects\WebDisplayClient\WebDisplayClient\obj\Release\WebDisplayClient.csproj.GenerateResource.Cache
+Z:\Users\Ходанович\documents\visual studio 2015\Projects\WebDisplayClient\WebDisplayClient\obj\Release\WebDisplayClient.exe
+Z:\Users\Ходанович\documents\visual studio 2015\Projects\WebDisplayClient\WebDisplayClient\obj\Release\WebDisplayClient.pdb
