@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!doctype html>
 <html>
 <head>
@@ -70,18 +71,16 @@ video {
 			<input id="drop" type="checkbox" name="dropbox">
 			<input id="yand" style="margin-left: 120px" type="checkbox" name=""><br><br><br>
 			<button onclick="enter()" class="btn btn-lg btn-primary">Входим</button>
+			<script src="js/yandex.js">
+			</script>
+			<?php
+				if(isset($_SESSION['tokenYandex']) or isset($_SESSION['tokenDropbox']) or isset($_GET['access_token'])){
+					header('Location: index.php');
+					exit;
+				}
+			?>
 		</div>
 	</div>
 </div>
-<script type="text/javascript">
-	function enter(){
-	  if (document.getElementById('drop').checked){ 
-        //window.open('http://www.smkproduction.eu5.org','_blank');
-	  }
-	  if(document.getElementById('yand').checked){
-	  	window.open = ('https://oauth.yandex.ru/authorize?response_type=token&client_id=4b479e43e55847a5a5d2eb9a53052e21&display=popuplogin_hint=Никита&force_confirm=yes&state=<произвольная строка>', '_blank');
-	  }
-	}
-</script>
 </body>
 </html>

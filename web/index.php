@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!doctype html>
 <html>
 <head>
@@ -64,22 +65,25 @@ video {
 		<div style="margin-top: 100px; text-align: center;">
 			<h1 style="color: white">Привет!</h1>
 			<h2 style="color: white">Выбери свои облачные хранилища </h2>
-			<a onclick="check()"><img src="img/dropbox.png" style="width: 130px"></a>
+			<img src="img/gdrive.png" style="width: 130px">
 			<img src="img/yandex.png" style="width: 130px">
 			<br>
-			<input id="drop" type="checkbox" name="dropbox">
+			<input id="drive" type="checkbox" name="drive">
 			<input id="yand" style="margin-left: 120px" type="checkbox" name=""><br><br><br>
 			<button onclick="enter()" class="btn btn-lg btn-primary">Входим</button>
+			<?php
+				// Проверка на наличие токенов
+			?>
 		</div>
 	</div>
 </div>
 <script type="text/javascript">
 	function enter(){
-	  if (document.getElementById('drop').checked){ 
-        //window.open('http://www.smkproduction.eu5.org','_blank');
+	  if (document.getElementById('drive').checked){ 
+        window.open('http://www.dropbox.com','_blank');
 	  }
 	  if(document.getElementById('yand').checked){
-	  	window.open = ('https://oauth.yandex.ru/authorize?response_type=token&client_id=4b479e43e55847a5a5d2eb9a53052e21&display=popuplogin_hint=Никита&force_confirm=yes&state=<произвольная строка>', '_blank');
+	  	window.location.href = 'https://oauth.yandex.ru/authorize?response_type=token&client_id=4b479e43e55847a5a5d2eb9a53052e21&display=popuplogin_hint=Никита&force_confirm=yes&state=<произвольная строка>';
 	  }
 	}
 </script>
