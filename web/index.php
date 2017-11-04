@@ -15,6 +15,8 @@
     <script src="./js/jquery-2.1.0.min.js"></script>
 	<script src="./js/bootstrap.min.js"></script>
 	<script src="./js/blocs.min.js"></script>
+	<script src="./js/google.js"></script>
+	<script src="./js/sessvars.js"></script>
     <title>ОБЛАКО</title>
 
     
@@ -50,11 +52,11 @@ video {
   div{width:70%;} 
 }
 @media screen and (max-device-width: 800px) {
-  html { background: url(https://thenewcode.com/assets/images/polina.jpg) #000 no-repeat center center fixed; }
+  html { background: url(https://i.ytimg.com/vi/tQ-WuUHNIz8/maxresdefault.jpg) #000 no-repeat center center fixed; }
   #bgvid { display: none; }
 }
 </style>
-<video poster="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/polina.jpg" id="bgvid" playsinline autoplay muted loop>
+<video poster="https://i.ytimg.com/vi/tQ-WuUHNIz8/maxresdefault.jpg" id="bgvid" playsinline autoplay muted loop>
   <!-- WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button  -->
 <source src="ink.mp4" type="video/webm">
 <source src="ink.mp4" type="video/mp4">
@@ -72,20 +74,35 @@ video {
 			<input id="yand" style="margin-left: 120px" type="checkbox" name=""><br><br><br>
 			<button onclick="enter()" class="btn btn-lg btn-primary">Входим</button>
 			<?php
-				// Проверка на наличие токенов
+				
 			?>
 		</div>
 	</div>
 </div>
 <script type="text/javascript">
 	function enter(){
-	  if (document.getElementById('drive').checked){ 
-        window.open('http://www.dropbox.com','_blank');
+		  if (document.getElementById('drive').checked){ 
+	        trySampleRequest();
+		  }
+		  if(document.getElementById('yand').checked){
+		  	window.open('https://oauth.yandex.ru/authorize?response_type=token&client_id=4b479e43e55847a5a5d2eb9a53052e21&display=popuplogin_hint=Никита&force_confirm=yes&state=<произвольная строка>', '_blank');
+		  }
 	  }
-	  if(document.getElementById('yand').checked){
-	  	window.location.href = 'https://oauth.yandex.ru/authorize?response_type=token&client_id=4b479e43e55847a5a5d2eb9a53052e21&display=popuplogin_hint=Никита&force_confirm=yes&state=<произвольная строка>';
-	  }
+	  function getUrlVars() {
+	    var vars = {};
+	    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+	        vars[key] = value;
+	    });
+	    return vars;
 	}
+	   
+	 var access_token = getUrlVars()["access_token"];
+	 if(access_token.indexOf('ya29.')){
+	 	sessvars.tok_acc = {googleToken: access_token}
+	 }else{
+	 	sessvars.tok_acc = {yandexToken: access_token}
+	 }
 </script>
+
 </body>
 </html>

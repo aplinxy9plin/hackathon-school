@@ -4,72 +4,16 @@
 /*
 	ЯНДЕКС ДИСК -------------------------------------------------------
 */
+function yandex(){
+
 	let token = 'AQAAAAAZ1hl4AAShVoKCipTju0UCkzxMLQBHMNo';
-// инфа по диску https://cloud-api.yandex.net/v1/disk/
-	$.ajax({
-		url: 'https://cloud-api.yandex.net:443/v1/disk/resources/files',
-		type: 'GET',
-		dataType: 'json',
-		headers: {
-		"Authorization": "OAuth AQAAAAAZ1hl4AAShVoKCipTju0UCkzxMLQBHMNo"
-		},
-		success: function (data) {
-		console.log(data);
-		yandexDisk(data);
-		},
-		error: function (error) {
-		console.log(error);
-		}
-	})
-	function yandexDisk(json){
-		var folders = [];
-		var content = [];
-		var noFolder = [];
-		var x = 0;
-		var z = 0;
-		for (var i = json.items.length - 1; i >= 0; i--) {
-			document.write(json.items[i].path.replace('disk:/', '') + '<br>');
-			if(json.items[i].path.replace('disk:/', '').indexOf('/') + 1){
-				folders[x] = explode('/', json.items[i].path.replace('disk:/', ''));
-				x++;
-			}else{
-				noFolder[z] = json.items[i].path.replace('disk:/', '');
-				z++;
-			}
-		}
-		content = folders;
-		// Папка
-		document.write('<br>Folders <br>');
-		folders = unique(folders);
-		console.log(content);
-		// Содержание папок
-		x = 0;
-		var y = 1;
-		for (var i = folders.length - 1; i >= 0; i--) {
-			document.write('<b>' +folders[i] + '</b>' + '<br>');
-			for (var j = content.length - 1; j >= 0; j--) {
-				if(content[j][0] == folders[i]){
-					document.write(content[j][1] + '<br>');
-				}
-			}
-		}
-		// Без нихуя
-		document.write('<b>Без нихуя</b>' + '<br>');
-		for (var i = noFolder.length - 1; i >= 0; i--) {
-			document.write(noFolder[i] + '<br>');
-		}
-	}
-/*
-	DROPBOX -------------------------------------------------------
-*/
-	let tokenDrop = 'AQAAAAAZ1hl4AAShVoKCipTju0UCkzxMLQBHMNo';
 	// инфа по диску https://cloud-api.yandex.net/v1/disk/
 	$.ajax({
 		url: 'https://cloud-api.yandex.net:443/v1/disk/resources/files',
 		type: 'GET',
 		dataType: 'json',
 		headers: {
-		"Authorization": "OAuth AQAAAAAZ1hl4AAShVoKCipTju0UCkzxMLQBHMNo"
+		"Authorization": "OAuth AQAAAAAZ1hl4AAShVhzqTn55O0oLhyAdDIB2aHY"
 		},
 		success: function (data) {
 		console.log(data);
@@ -86,7 +30,7 @@
 		var x = 0;
 		var z = 0;
 		for (var i = json.items.length - 1; i >= 0; i--) {
-			document.write(json.items[i].path.replace('disk:/', '') + '<br>');
+			createNote(json.items[i].path.replace('disk:/', '') + '<br>');
 			if(json.items[i].path.replace('disk:/', '').indexOf('/') + 1){
 				folders[x] = explode('/', json.items[i].path.replace('disk:/', ''));
 				x++;
@@ -97,27 +41,26 @@
 		}
 		content = folders;
 		// Папка
-		document.write('<br>Folders <br>');
+		createNote('<br>Folders <br>');
 		folders = unique(folders);
 		console.log(content);
 		// Содержание папок
 		x = 0;
 		var y = 1;
 		for (var i = folders.length - 1; i >= 0; i--) {
-			document.write('<b>' +folders[i] + '</b>' + '<br>');
+			createNote('<b>' +folders[i] + '</b>' + '<br>');
 			for (var j = content.length - 1; j >= 0; j--) {
 				if(content[j][0] == folders[i]){
-					document.write(content[j][1] + '<br>');
+					createNote(content[j][1] + '<br>');
 				}
 			}
 		}
 		// Без нихуя
-		document.write('<b>Без нихуя</b>' + '<br>');
+		createNote('<b>Без нихуя</b>' + '<br>');
 		for (var i = noFolder.length - 1; i >= 0; i--) {
-			document.write(noFolder[i] + '<br>');
+			createNote('noFolder[i] + '<br>'');
 		}
 	}
-	
 
 	function explode( delimiter, string ) {
 	var emptyArray = { 0: '' };
@@ -154,4 +97,15 @@ function unique(arr) {
   }
   return Object.keys(obj);
 }
+function createNote(text){
+            var newLi = document.createElement('li');
+            newLi.innerHTML = text;
+            list.appendChild(newLi);
+        }
+}
+
 </script>
+<button onclick="yandex()">Click me</button>
+<ul id="list" style="color: black">
+
+</ul>
