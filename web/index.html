@@ -4,7 +4,7 @@
 /*
 	ЯНДЕКС ДИСК -------------------------------------------------------
 */
-
+	let token = 'AQAAAAAZ1hl4AAShVoKCipTju0UCkzxMLQBHMNo';
 // инфа по диску https://cloud-api.yandex.net/v1/disk/
 	$.ajax({
 		url: 'https://cloud-api.yandex.net:443/v1/disk/resources/files',
@@ -63,22 +63,66 @@
 	DROPBOX -------------------------------------------------------
 */
 
-	let token = '8mjRquq6jos7QgEMmZw8s1uJNqcfvtfr';
-	 var data = new TextEncoder("utf-8").encode("Test");
-	 jQuery.ajax({
- url: 'https://api.dropboxapi.com/2/files/list_folder',
- type: 'POST',
- dataType: 'json',
- headers: {
- "Authorization": "Bearer QGmzUUaJWMAAAAAAAAAKmoWscADF0ZUMyWStUEVKrzYxGV3uL56YxrdGUWtg-vcb"
- },
- success: function (data) {
- console.log(data);
- },
- error: function (error) {
- console.log(error);
- }
- })
+	/*
+	ЯНДЕКС ДИСК -------------------------------------------------------
+*/
+	let tokenDrop = 'AQAAAAAZ1hl4AAShVoKCipTju0UCkzxMLQBHMNo';
+// инфа по диску https://cloud-api.yandex.net/v1/disk/
+	$.ajax({
+		url: 'https://cloud-api.yandex.net:443/v1/disk/resources/files',
+		type: 'GET',
+		dataType: 'json',
+		headers: {
+		"Authorization": "OAuth AQAAAAAZ1hl4AAShVoKCipTju0UCkzxMLQBHMNo"
+		},
+		success: function (data) {
+		console.log(data);
+		yandexDisk(data);
+		},
+		error: function (error) {
+		console.log(error);
+		}
+	})
+	function yandexDisk(json){
+		var folders = [];
+		var content = [];
+		var noFolder = [];
+		var x = 0;
+		var z = 0;
+		for (var i = json.items.length - 1; i >= 0; i--) {
+			document.write(json.items[i].path.replace('disk:/', '') + '<br>');
+			if(json.items[i].path.replace('disk:/', '').indexOf('/') + 1){
+				folders[x] = explode('/', json.items[i].path.replace('disk:/', ''));
+				x++;
+			}else{
+				noFolder[z] = json.items[i].path.replace('disk:/', '');
+				z++;
+			}
+		}
+		content = folders;
+		// Папка
+		document.write('<br>Folders <br>');
+		folders = unique(folders);
+		console.log(content);
+		// Содержание папок
+		x = 0;
+		var y = 1;
+		for (var i = folders.length - 1; i >= 0; i--) {
+			document.write('<b>' +folders[i] + '</b>' + '<br>');
+			for (var j = content.length - 1; j >= 0; j--) {
+				if(content[j][0] == folders[i]){
+					document.write(content[j][1] + '<br>');
+				}
+			}
+		}
+		// Без нихуя
+		document.write('<b>Без нихуя</b>' + '<br>');
+		for (var i = noFolder.length - 1; i >= 0; i--) {
+			document.write(noFolder[i] + '<br>');
+		}
+	}
+	
+
 	function explode( delimiter, string ) {
 	var emptyArray = { 0: '' };
 	if ( arguments.length != 2
