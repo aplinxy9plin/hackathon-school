@@ -63,9 +63,25 @@ video {
 	<div class="row" style="position: fixed; background-image: url('img/grayBack.png'); left: 20%; min-height: 768px; min-width: 1024px; max-height: 768px; max-height: 1024px">
 		<div style="margin-top: 100px; text-align: center;">
 			<h1 style="color: white">Привет!</h1>
-			<h2 style="color: white">Для доступа к хранилищам пройди, пожалуйста авторизацию </h2>
+			<h2 style="color: white">Выбери свои облачные хранилища </h2>
+			<img src="img/dropbox.png" style="width: 130px">
+			<img src="img/yandex.png" style="width: 130px">
+			<br>
+			<input id="drop" type="checkbox" name="dropbox">
+			<input id="yand" style="margin-left: 120px" type="checkbox" name=""><br><br><br>
+			<button onclick="enter()" class="btn btn-lg btn-primary">Входим</button>
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	function enter(){
+	  if (document.getElementById('drop').checked){ 
+	  	window.location.href = 'http://google.com/';
+	  }
+	  if(document.getElementById('yand').checked){
+	  	window.location.href = 'http://google.com/';
+	  }
+	}
+</script>
 </body>
 </html>
