@@ -2,7 +2,7 @@
 <script type="text/javascript">
 
 /*
-	ЯНДЕКС ДИСК
+	ЯНДЕКС ДИСК -------------------------------------------------------
 */
 
 // инфа по диску https://cloud-api.yandex.net/v1/disk/
@@ -11,7 +11,7 @@
 		type: 'GET',
 		dataType: 'json',
 		headers: {
-		"Authorization": "OAuth AQAAAAAZ1hl4AAShIcrkoZBYFUPHojiDTZW-V94"
+		"Authorization": "OAuth AQAAAAAZ1hl4AAShVoKCipTju0UCkzxMLQBHMNo"
 		},
 		success: function (data) {
 		console.log(data);
@@ -59,12 +59,26 @@
 			document.write(noFolder[i] + '<br>');
 		}
 	}
-
 /*
-	MAIL RU
+	DROPBOX -------------------------------------------------------
 */
 
-
+	let token = '8mjRquq6jos7QgEMmZw8s1uJNqcfvtfr';
+	 var data = new TextEncoder("utf-8").encode("Test");
+	 jQuery.ajax({
+ url: 'https://api.dropboxapi.com/2/files/list_folder',
+ type: 'POST',
+ dataType: 'json',
+ headers: {
+ "Authorization": "Bearer QGmzUUaJWMAAAAAAAAAKmoWscADF0ZUMyWStUEVKrzYxGV3uL56YxrdGUWtg-vcb"
+ },
+ success: function (data) {
+ console.log(data);
+ },
+ error: function (error) {
+ console.log(error);
+ }
+ })
 	function explode( delimiter, string ) {
 	var emptyArray = { 0: '' };
 	if ( arguments.length != 2
