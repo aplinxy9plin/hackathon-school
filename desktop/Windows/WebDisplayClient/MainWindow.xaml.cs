@@ -29,7 +29,7 @@ namespace WebDisplayClient
              
             string currentPath = Directory.GetCurrentDirectory();                  
             Uri uri = new Uri   
-                (currentPath + @"\..\..\..\..\" +
+                (currentPath + @"\..\..\..\..\..\" +
                 //Set interface file relative path
                 /* hackathon-school\ */ @"test.php"
                 );
