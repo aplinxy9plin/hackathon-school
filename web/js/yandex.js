@@ -1,8 +1,7 @@
-
 /*
 	ЯНДЕКС ДИСК -------------------------------------------------------
 */
-function yandex(){
+function yandex(ret){
 
 	let token = 'AQAAAAAZ1hl4AAShVoKCipTju0UCkzxMLQBHMNo';
 	// инфа по диску https://cloud-api.yandex.net/v1/disk/
@@ -38,24 +37,48 @@ function yandex(){
 		}
 		content = folders;
 		// Папка
-		createNote('<br>Folders <br>');
+		//createNote('<br>Folders <br>');
 		folders = unique(folders);
-		console.log(content);
+		//console.log(content);
 		// Содержание папок
 		x = 0;
 		var y = 1;
-		for (var i = folders.length - 1; i >= 0; i--) {
-			createNote('<img src="./img/folder.png">'+'<b>' +folders[i] + '</b>' + '<br>');
+		for (var i = folders.length - 1; i >= 1; i--) {
+			$("#hideGoogle ul").append('<li><div><a href="#" style="text-decoration: none;"><img class="folder" src="img/folder.png"><p>'+ folders[i] +'</p></a></div></li>');			//createNote('<img src="./img/folder.png">'+'<b>' +folders[i] + '</b>' + '<br>');
 			for (var j = content.length - 1; j >= 0; j--) {
 				if(content[j][0] == folders[i]){
-					createNote(content[j][1] + '<br>');
+					//createNote(content[j][1] + '<br>');
+					if(content[j][1].indexOf('mp4')+1){
+						$("#hideYandex ul").append('<li><div><a href="#" style="text-decoration: none;"><img class="folder" src="img/mp4.png"><p>'+ content[j][2] +'</p></a></div></li>');			//createNote('<img src="./img/folder.png">'+'<b>' +folders[i] + '</b>' + '<br>');
+					}
+					if(content[j][1].indexOf('mp3')+1){
+						$("#hideYandex ul").append('<li><div><a href="#" style="text-decoration: none;"><img class="folder" src="img/mp3.png"><p>'+ content[j][2] +'</p></a></div></li>');			//createNote('<img src="./img/folder.png">'+'<b>' +folders[i] + '</b>' + '<br>');
+					}
+					if(content[j][1].indexOf('jpg')+1){
+						$("#hideYandex ul").append('<li><div><a href="#" style="text-decoration: none;"><img class="folder" src="img/jpg.png"><p>'+ content[j][2] +'</p></a></div></li>');			//createNote('<img src="./img/folder.png">'+'<b>' +folders[i] + '</b>' + '<br>');
+					}
+					if(content[j][1].indexOf('docx')+1){
+						$("#hideYandex ul").append('<li><div><a href="#" style="text-decoration: none;"><img class="folder" src="img/doc.png"><p>'+ content[j][1] +'</p></a></div></li>');			//createNote('<img src="./img/folder.png">'+'<b>' +folders[i] + '</b>' + '<br>');
+					}
 				}
 			}
 		}
 		// Без нихуя
-		createNote('<b>Без ничего</b>' + '<br>');
+		//createNote('<b>Без ничего</b>' + '<br>');
 		for (var i = noFolder.length - 1; i >= 0; i--) {
-			createNote(noFolder[i] + '<br>');
+			if(noFolder[i].indexOf('mp4')+1){
+				$("#hideGoogle ul").append('<li><div><a href="#" style="text-decoration: none;"><img class="folder" src="img/mp4.png"><p>'+ noFolder[i] +'</p></a></div></li>');			//createNote('<img src="./img/folder.png">'+'<b>' +folders[i] + '</b>' + '<br>');
+			}
+			if(noFolder[i].indexOf('mp3')+1){
+				$("#hideGoogle ul").append('<li><div><a href="#" style="text-decoration: none;"><img class="folder" src="img/mp3.png"><p>'+ noFolder[i] +'</p></a></div></li>');			//createNote('<img src="./img/folder.png">'+'<b>' +folders[i] + '</b>' + '<br>');
+			}
+			if(noFolder[i].indexOf('jpg')+1){
+				$("#hideGoogle ul").append('<li><div><a href="#" style="text-decoration: none;"><img class="folder" src="img/jpg.png"><p>'+ noFolder[i] +'</p></a></div></li>');			//createNote('<img src="./img/folder.png">'+'<b>' +folders[i] + '</b>' + '<br>');
+			}
+			if(noFolder[i].indexOf('docx')+1){
+				$("#hideGoogle ul").append('<li><div><a href="#" style="text-decoration: none;"><img class="folder" src="img/doc.png"><p>'+ noFolder[i] +'</p></a></div></li>');			//createNote('<img src="./img/folder.png">'+'<b>' +folders[i] + '</b>' + '<br>');
+			}
+			//createNote(noFolder[i] + '<br>');
 		}
 	}
 
