@@ -1,5 +1,0 @@
-{
-    "require": {
-        "nixsolutions/yandex-php-library": "dev-master"
-    }
-}
