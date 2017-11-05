@@ -44,22 +44,11 @@ function yandex(ret){
 		x = 0;
 		var y = 1;
 		for (var i = folders.length - 1; i >= 1; i--) {
-			$("#hideGoogle ul").append('<li><div><a href="#" style="text-decoration: none;"><img class="folder" src="img/folder.png"><p>'+ folders[i] +'</p></a></div></li>');			//createNote('<img src="./img/folder.png">'+'<b>' +folders[i] + '</b>' + '<br>');
+			$("#main table").append('<tr><td id=0'+i+'><img width="30px" style="padding-bottom: 10px; margin-left: 250px" src="img/folder.png"> '+folders[i]+'</td><th width="30px"><a href="#"><img width="30px" src="img/download.png"></a></th></tr>');			//createNote('<img src="./img/folder.png">'+'<b>' +folders[i] + '</b>' + '<br>');
 			for (var j = content.length - 1; j >= 0; j--) {
 				if(content[j][0] == folders[i]){
 					//createNote(content[j][1] + '<br>');
-					if(content[j][1].indexOf('mp4')+1){
-						$("#hideYandex ul").append('<li><div><a href="#" style="text-decoration: none;"><img class="folder" src="img/mp4.png"><p>'+ content[j][2] +'</p></a></div></li>');			//createNote('<img src="./img/folder.png">'+'<b>' +folders[i] + '</b>' + '<br>');
-					}
-					if(content[j][1].indexOf('mp3')+1){
-						$("#hideYandex ul").append('<li><div><a href="#" style="text-decoration: none;"><img class="folder" src="img/mp3.png"><p>'+ content[j][2] +'</p></a></div></li>');			//createNote('<img src="./img/folder.png">'+'<b>' +folders[i] + '</b>' + '<br>');
-					}
-					if(content[j][1].indexOf('jpg')+1){
-						$("#hideYandex ul").append('<li><div><a href="#" style="text-decoration: none;"><img class="folder" src="img/jpg.png"><p>'+ content[j][2] +'</p></a></div></li>');			//createNote('<img src="./img/folder.png">'+'<b>' +folders[i] + '</b>' + '<br>');
-					}
-					if(content[j][1].indexOf('docx')+1){
-						$("#hideYandex ul").append('<li><div><a href="#" style="text-decoration: none;"><img class="folder" src="img/doc.png"><p>'+ content[j][1] +'</p></a></div></li>');			//createNote('<img src="./img/folder.png">'+'<b>' +folders[i] + '</b>' + '<br>');
-					}
+					
 				}
 			}
 		}
@@ -67,16 +56,16 @@ function yandex(ret){
 		//createNote('<b>Без ничего</b>' + '<br>');
 		for (var i = noFolder.length - 1; i >= 0; i--) {
 			if(noFolder[i].indexOf('mp4')+1){
-				$("#hideGoogle ul").append('<li><div><a href="#" style="text-decoration: none;"><img class="folder" src="img/mp4.png"><p>'+ noFolder[i] +'</p></a></div></li>');			//createNote('<img src="./img/folder.png">'+'<b>' +folders[i] + '</b>' + '<br>');
+				$("#main table").append('<tr><td id='+i+'><img width="30px" style="padding-bottom: 10px; margin-left: 250px" src="img/mp4.png"> '+noFolder[i]+'</td><th width="30px"><a id=2'i' href="#"><img width="30px" src="img/download.png"></a></th></tr>');			//createNote('<img src="./img/folder.png">'+'<b>' +folders[i] + '</b>' + '<br>');
 			}
 			if(noFolder[i].indexOf('mp3')+1){
-				$("#hideGoogle ul").append('<li><div><a href="#" style="text-decoration: none;"><img class="folder" src="img/mp3.png"><p>'+ noFolder[i] +'</p></a></div></li>');			//createNote('<img src="./img/folder.png">'+'<b>' +folders[i] + '</b>' + '<br>');
+				$("#main table").append('<tr><td id='+i+'><img width="30px" style="padding-bottom: 10px; margin-left: 250px" src="img/mp3.png"> '+noFolder[i]+'</td><th width="30px"><a id=2'i' href="#"><img width="30px" src="img/download.png"></a></th></tr>');			//createNote('<img src="./img/folder.png">'+'<b>' +folders[i] + '</b>' + '<br>');
 			}
 			if(noFolder[i].indexOf('jpg')+1){
-				$("#hideGoogle ul").append('<li><div><a href="#" style="text-decoration: none;"><img class="folder" src="img/jpg.png"><p>'+ noFolder[i] +'</p></a></div></li>');			//createNote('<img src="./img/folder.png">'+'<b>' +folders[i] + '</b>' + '<br>');
+				$("#main table").append('<tr><td id='+i+'><img width="30px" style="padding-bottom: 10px; margin-left: 250px" src="img/jpg.png"> '+noFolder[i]+'</td><th width="30px"><a id=2'i' href="#"><img width="30px" src="img/download.png"></a></th></tr>');			//createNote('<img src="./img/folder.png">'+'<b>' +folders[i] + '</b>' + '<br>');
 			}
 			if(noFolder[i].indexOf('docx')+1){
-				$("#hideGoogle ul").append('<li><div><a href="#" style="text-decoration: none;"><img class="folder" src="img/doc.png"><p>'+ noFolder[i] +'</p></a></div></li>');			//createNote('<img src="./img/folder.png">'+'<b>' +folders[i] + '</b>' + '<br>');
+				$("#main table").append('<tr><td id='+i+'><img width="30px" style="padding-bottom: 10px; margin-left: 250px" src="img/docx.png"> '+noFolder[i]+'</td><th width="30px"><a id=2'i' href="#"><img width="30px" src="img/download.png"></a></th></tr>');			//createNote('<img src="./img/folder.png">'+'<b>' +folders[i] + '</b>' + '<br>');
 			}
 			//createNote(noFolder[i] + '<br>');
 		}
