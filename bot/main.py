@@ -136,14 +136,29 @@ def callback_inline_choice(call):
         if call.data == "ya":
             # Измерение мест на диске
             text_ssy = clouds.size_space_ya(call)
-            total_space = (str(text_ssy.get('total_space') / 2 ** 30)) + ' Gb - Общий объем диска'
-            used_space = (str(text_ssy.get('used_space') / 2 ** 20)) + ' Mb - Используемый объем диска'
-            free_space = (str((text_ssy.get('total_space') - text_ssy.get('used_space')) / 2 ** 30)) + \
-                         ' Gb - Свободное место на диске'
+            total_space = (str(text_ssy.get('total_space') / 2 ** 30)) + ' Gb'
+            used_space = (str(text_ssy.get('used_space') / 2 ** 20)) + ' Mb'
+            free_space = (str((text_ssy.get('total_space') - text_ssy.get('used_space')) / 2 ** 20)) + \
+                         ' Mb'
             # Анализ путей и файлов на диске
-
+            text_fpy = clouds.files_path_ya(call)
+            array_path = []
+            array_size = []
+            counter = -1
+            for i in text_fpy["items"]:
+                array_path.append([str('')])
+                array_size.append([str('')])
+                counter += 1
+                array_path[counter] = (i['path'])
+                array_size[counter] = (i['size'])
+                array_path[counter] = array_path[counter][5:]
+            string_path = '\n'.join(array_path)
+            counter += 1
+            # Вывод данных Яндекс Диска
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,
-                                  text="⛅ Яндекс Диск: \n \n" + total_space + "\n" + used_space + "\n" + free_space +
+                                  text="⛅ Яндекс Диск: \n \n " + free_space + " - на данный момент свободного места"
+                                       "\n \nНа Яндекс Диске находится " + str(counter) + " файлов, общим весом - "
+                                       + used_space + " из " + total_space + "\n \n Файлы в облаке: \n" + string_path +
                                        "\n \n Чтобы вернуться, введите /home или /cloud, чтобы выбрать другое облако.")
 
     # Пользователь выбрал Облако Mail.ru (не реализовано)
