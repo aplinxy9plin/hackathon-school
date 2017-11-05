@@ -2,6 +2,7 @@
 
 import requests
 import config
+import telebot
 import json
 
 
@@ -19,17 +20,21 @@ def ya_check(message):
     else:
         # Запись токена и ID пользователя в txt документ
         ya_response = True
-        config.dictionary_tokens_ya = (str(message.chat.id), str(message.text) + "\n")
-        dictionary_tokens_file_ya = open('dictionary_tokens_ya.txt', 'w')
-        dictionary_tokens_file_ya.write(str(config.dictionary_tokens_ya))
-        dictionary_tokens_file_ya.close()
+        config.dictionary_tokens_ya = (str(message.chat.id), str(message.text))
+        config.dictionary_tokens_file_ya = open('dictionary_tokens_ya.txt', 'a')
+        config.dictionary_tokens_file_ya.write(str(config.dictionary_tokens_ya) + '\n')
+        config.dictionary_tokens_file_ya.close()
+        config.dictionary_tokens_file_ya = open('dictionary_tokens_ya.txt', 'r')
+        config.dictionary_tokens_ya = config.dictionary_tokens_file_ya.read()
+        config.dictionary_tokens_file_ya.close()
     return ya_response
 
 
 def size_space_ya(call):
     # Поиск токена в документе
     token_place = config.dictionary_tokens_ya.find(str(call.from_user.id))
-    token_local = config.dictionary_tokens_ya[token_place + 14: token_place + 53]
+    token_local = config.dictionary_tokens_ya[token_place + 13: token_place + 52]
+    print(token_local)
     # Запрос
     request = "https://cloud-api.yandex.net:443/v1/disk?fields=total_space%2C%20used_space"
     auth_token = {"Authorization": token_local}
@@ -49,7 +54,7 @@ def size_space_ya(call):
 def files_path_ya(call):
     # Поиск токена в документе
     token_place = config.dictionary_tokens_ya.find(str(call.from_user.id))
-    token_local = config.dictionary_tokens_ya[token_place + 14: token_place + 53]
+    token_local = config.dictionary_tokens_ya[token_place + 13: token_place + 52]
     # Запрос
     request = "https://cloud-api.yandex.net:443/v1/disk/resources/files?fields=size"
     auth_token = {"Authorization": token_local}
