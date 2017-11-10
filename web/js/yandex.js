@@ -10,7 +10,7 @@ function yandex(ret){
 		type: 'GET',
 		dataType: 'json',
 		headers: {
-		"Authorization": "OAuth "+"token"+";
+		"Authorization": "OAuth +"token"+";
 		},
 		success: function (data) {
 		console.log(data);
