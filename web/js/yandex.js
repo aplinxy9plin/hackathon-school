@@ -3,14 +3,14 @@
 */
 function yandex(ret){
 
-	let token = 'AQAAAAAZ1hl4AAShVoKCipTju0UCkzxMLQBHMNo';
+	let token = '';
 	// инфа по диску https://cloud-api.yandex.net/v1/disk/
 	$.ajax({
 		url: 'https://cloud-api.yandex.net:443/v1/disk/resources/files',
 		type: 'GET',
 		dataType: 'json',
 		headers: {
-		"Authorization": "OAuth AQAAAAAZ1hl4AAShVhzqTn55O0oLhyAdDIB2aHY"
+		"Authorization": "OAuth "+"token"+";
 		},
 		success: function (data) {
 		console.log(data);
